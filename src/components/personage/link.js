@@ -5,10 +5,9 @@ import type { PersonageLink } from '../../types/personage';
 import { PersonageLinkDefault } from './default';
 
 
-export default ({ link }: {link: PersonageLink} = {link: PersonageLinkDefault()}) => {
-  const {source, target}: PersonageLink = link;
+export default (props: {link: PersonageLink}) => {
+  const {source, target}: PersonageLink = props.link || PersonageLinkDefault();
   const isRoyal = isAKingDescendance(target.data);
-  
   const styles = Object.assign({}, isRoyal ? {
     stroke: 'red',
     strokeWidth: 3,

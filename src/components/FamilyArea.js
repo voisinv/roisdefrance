@@ -56,7 +56,7 @@ class FamilyArea extends Component<State, State> {
     
     const links = root.links();
     const descendants = root.descendants();
-    console.log(links);
+    
     return (
       <g>
         <rect width={WIDTH} height={HEIGHT} style={{ fill: '#ff81006b' }}></rect>

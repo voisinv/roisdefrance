@@ -4,8 +4,13 @@ import React from 'react';
 import type { PersonageNode } from '../../types/personage';
 import { PersonageNodeDefault } from './default';
 
-export default (person: PersonageNode = PersonageNodeDefault()) => {
+export default (props: { personage: PersonageNode }) => {
+  const personage: PersonageNode = props.personage || PersonageNodeDefault();
   return (
-    <text x={person.x - person.data.value.length * 4} y={person.y - 40}>{person.data.value}</text>
+    <text
+      x={personage.x - personage.data.value.length * 4}
+      y={personage.y - 40}>
+      {personage.data.value}
+    </text>
   );
 }
