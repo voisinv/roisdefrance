@@ -2,7 +2,7 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 
-import PersonCircle from './person-circle';
+import PersonCircle from './circle';
 
 test('should render a circle', () => {
   const Person = renderer.create(<PersonCircle/>).toJSON();

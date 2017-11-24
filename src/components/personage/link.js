@@ -1,12 +1,12 @@
 // @flow
 import React from 'react';
 
-import type { PersonLink } from '../../types/person';
-import { PersonLinkDefault } from './default';
+import type { PersonageLink } from '../../types/personage';
+import { PersonageLinkDefault } from './default';
 
 
-export default ({ person }: PersonLink = PersonLinkDefault()) => {
-  const { source, target } = person;
+export default ({ link }: {link: PersonageLink} = {link: PersonageLinkDefault()}) => {
+  const {source, target}: PersonageLink = link;
   const isRoyal = isAKingDescendance(target.data);
   
   const styles = Object.assign({}, isRoyal ? {

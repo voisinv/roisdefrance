@@ -1,8 +1,9 @@
 // @flow
 
 import React, { Component } from 'react';
-import PersonCircle from './person/circle';
-import PersonLink from './person/link';
+
+import PersonageCircle from './personage/circle';
+import PersonageLink from './personage/link';
 import { hierarchy, tree } from 'd3';
 
 type State = {
@@ -55,15 +56,15 @@ class FamilyArea extends Component<State, State> {
     
     const links = root.links();
     const descendants = root.descendants();
-    
+    console.log(links);
     return (
       <g>
         <rect width={WIDTH} height={HEIGHT} style={{ fill: '#ff81006b' }}></rect>
         <g style={{ stroke: '#0000ff2e' }} transform='translate(0, 50)'>
           {links.map((p: any, i: number) =>
-            (<PersonLink person={p} key={i + 'link'}></PersonLink>))}
+            (<PersonageLink link={p} key={i + 'link'}></PersonageLink>))}
           {descendants.map((p: any, i: number) =>
-            (<PersonCircle person={p} index={i} key={i + 'person'}></PersonCircle>))}
+            (<PersonageCircle personage={p} key={i + 'personageperson'}></PersonageCircle>))}
         </g>
       </g>
     )
