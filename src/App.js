@@ -1,18 +1,27 @@
+// @flow
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import data from './source';
+import FamilyArea from './components/FamilyArea';
 
-class App extends Component {
+type state = {
+  data: Array<any>
+};
+
+class App extends Component<{}, state> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      data
+    }
+  }
+  
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <svg height={5000} width={window.innerWidth}>
+          <FamilyArea data={this.state.data[0]}></FamilyArea>
+        </svg>
       </div>
     );
   }
