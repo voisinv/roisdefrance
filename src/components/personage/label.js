@@ -5,12 +5,11 @@ import * as d3 from 'd3';
 import type { PersonageNode } from '../../types/personage';
 import { PersonageNodeDefault } from './default';
 
-const paddingLeftRight = 18; // adjust the padding values depending on font and font size
+const paddingLeftRight = 18;
 const paddingTopBottom = 5;
 
 export default (props: { personage: PersonageNode }) => {
   const personage: PersonageNode = props.personage || PersonageNodeDefault();
-  const textWidth = personage.data.value.length;
   const x = personage.x;
   const y = personage.y - 40;
   const g = d3.select('.' + personage.data.id);
@@ -37,12 +36,10 @@ export default (props: { personage: PersonageNode }) => {
       .attr('width', bbox.width + paddingLeftRight)
       .attr('height', bbox.height + paddingTopBottom)
       
-      .attr('text-anchor', 'middle')
-      //.attr('x', x -)
+      .attr('text-anchor', 'middle');
   });
   
   return (
-    <g className={personage.data.id}>
-    </g>
+    <g className={personage.data.id}></g>
   );
 }
