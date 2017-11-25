@@ -2,7 +2,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import data from './source';
-import FamilyArea from './components/FamilyArea';
+import Family from './containers/Family';
 
 type state = {
   data: Array<any>
@@ -20,7 +20,7 @@ class App extends Component<{}, state> {
     return (
       <div className="App">
         <svg height={5000} width={window.innerWidth}>
-          <FamilyArea data={this.state.data[0]}></FamilyArea>
+          <Family data={this.state.data[0]}></Family>
         </svg>
       </div>
     );

@@ -1,6 +1,7 @@
 // @flow
 
 export type Personage = {
+  id: string,
   value: string,
   date?: [number, number],
   reign?: number,

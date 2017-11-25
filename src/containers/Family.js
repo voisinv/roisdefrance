@@ -1,10 +1,11 @@
 // @flow
 
 import React, { Component } from 'react';
-
-import PersonageCircle from './personage/circle';
-import PersonageLink from './personage/link';
 import { hierarchy, tree } from 'd3';
+
+import PersonageLink from '../components/personage/link';
+import PersonageContainer from './PersonageCard';
+
 
 type State = {
   data: {
@@ -13,7 +14,7 @@ type State = {
   }
 }
 
-class FamilyArea extends Component<State, State> {
+class Family extends Component<State, State> {
   constructor(props: any) {
     super(props);
     this.state = {
@@ -64,11 +65,11 @@ class FamilyArea extends Component<State, State> {
           {links.map((p: any, i: number) =>
             (<PersonageLink link={p} key={i + 'link'}></PersonageLink>))}
           {descendants.map((p: any, i: number) =>
-            (<PersonageCircle personage={p} key={i + 'personageperson'}></PersonageCircle>))}
+            (<PersonageContainer personage={p} key={i + 'personageperson'}></PersonageContainer>))}
         </g>
       </g>
     )
   }
 }
 
-export default FamilyArea;
+export default Family;

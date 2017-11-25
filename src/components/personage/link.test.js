@@ -2,7 +2,7 @@ import React from 'react';
 import renderer from 'react-test-renderer';
 
 import PersonageLink from './link';
-import { PersonageNodeDefault, PersonageLinkDefault } from './default';
+import { PersonageNodeDefault } from './default';
 
 test('should render a link', () => {
   const source = Object.assign({}, PersonageNodeDefault(), { x: 140, y: 150 });
@@ -29,6 +29,7 @@ test('should render a link', () => {
 
 test('should render a default link', () => {
   const line = renderer.create(<PersonageLink />).toJSON();
+  
   expect(line).toBeTruthy();
   expect(line.type).toEqual('line');
   
