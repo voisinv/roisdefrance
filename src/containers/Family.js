@@ -1,39 +1,73 @@
 // @flow
 
 import React, { Component } from 'react';
-import { hierarchy, tree } from 'd3';
+import { hierarchy, tree } from 'd3-hierarchy';
 
 import PersonageLink from '../components/personage/link';
 import PersonageContainer from './PersonageCard';
 
+import type {FamilyConfiguration} from "../types/family";
+import type { PersonageNode } from "../types/personage";
 
-type State = {
-  data: {
-    familyName: string,
-    children: Array<any>
-  }
+type FamilyObject = {
+  familyName: string,
+  children: Array<any>
 }
 
-class Family extends Component<State, State> {
+type State = {
+  configuration: FamilyConfiguration,
+  data: FamilyObject,
+  links: Array<void | PersonageLink>,
+  descendants: Array<void | PersonageNode>,
+  width: number,
+  height: number
+}
+
+class Family extends Component<any, State> {
   constructor(props: any) {
     super(props);
     this.state = {
       data: {
         familyName: '',
         children: []
-      }
-    }
+      },
+      links: [],
+      descendants: [],
+      width: 0,
+      height: 0,
+      configuration: props.configuration
+    };
   }
   
   componentDidMount() {
+    this.setState({data: this.props.data});
+    this.updateTree(this.props.data);
+  }
+  
+  updateTree(family: FamilyObject) {
+    if (family.children.length === 0) {
+      return;
+    }
+    const root = hierarchy(family.children[0]);
+    const treeLayout = tree();
+    const WIDTH = window.innerWidth;
+    const HEIGHT = this.getMaxDepth(family.children[0]);
+    
+    treeLayout.size([WIDTH, HEIGHT - 150]);
+    treeLayout(root);
+    
     this.setState({
-      data: this.props.data
+      links: root.links(),
+      descendants: root.descendants(),
+      width: WIDTH,
+      height: HEIGHT
     });
   }
   
   getMaxDepth(parent: any = {}): number {
     let depth = 1;
-    function test(p: any = {}) {
+    
+    function test(p: any = {}): number {
       p.children = p.children || [];
       const depths = p.children.filter((child: any = {}) => child.children);
       if (depths.length) {
@@ -42,34 +76,42 @@ class Family extends Component<State, State> {
       }
       return depth;
     }
-    return test(parent) * 150;
+    
+    return test(parent) * 175;
   }
   
   
   render() {
-    const root = hierarchy(this.props.data.children[0]);
-    const treeLayout = tree();
-    const WIDTH = window.innerWidth;
-    const HEIGHT = this.getMaxDepth(this.state.data.children[0]);
-    
-    treeLayout.size([WIDTH, HEIGHT - 100]);
-    treeLayout(root);
-    
-    const links = root.links();
-    const descendants = root.descendants();
-    
     return (
-      <g>
-        <rect width={WIDTH} height={HEIGHT} style={{ fill: '#ff81006b' }}></rect>
-        <g style={{ stroke: '#0000ff2e' }} transform='translate(0, 50)'>
-          {links.map((p: any, i: number) =>
+      <g style={{ stroke: '#0000ff2e' }}>
+        <rect width={this.state.width} height={this.state.height} style={{ fill: this.state.configuration.background }}></rect>
+        <g transform='translate(0, 100)'>
+          {this.state.links.map((p: any, i: number) =>
             (<PersonageLink link={p} key={i + 'link'}></PersonageLink>))}
-          {descendants.map((p: any, i: number) =>
+          {this.state.descendants.map((p: any, i: number) =>
             (<PersonageContainer personage={p} key={i + 'personageperson'}></PersonageContainer>))}
         </g>
+        <text x={10} y={50} style={styles.familyName}>{this.state.data.familyName}</text>
+        <text x={10} y={90} style={styles.familyCenturies}>XVII - XIX</text>
       </g>
     )
   }
 }
+
+const styles = {
+  familyName: {
+    fontSize: 60,
+    fill: 'white',
+    stroke: '#cacaca',
+    fontWeight: 'bold',
+    fillOpacity: 0.9
+  },
+  familyCenturies: {
+    fontSize: 45,
+    fill: '#f5f4f4',
+    fillOpacity: 0.9
+  }
+  
+};
 
 export default Family;

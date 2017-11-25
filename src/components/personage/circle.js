@@ -11,6 +11,7 @@ export default (props: {personage: PersonageNode}) => {
     stroke: 'grey',
     strokeWidth: 3
   };
+  
   return <circle
     cx={personage.x}
     cy={personage.y}

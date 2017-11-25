@@ -8,12 +8,10 @@ import { PersonageNodeDefault } from './default';
 const paddingLeftRight = 18;
 const paddingTopBottom = 5;
 
-export default (props: { personage: PersonageNode }) => {
-  const personage: PersonageNode = props.personage || PersonageNodeDefault();
+function createLabel(node: any, personage: PersonageNode) {
   const x = personage.x;
   const y = personage.y - 40;
-  const g = d3.select('.' + personage.data.id);
-  
+  const g = d3.select(node);
   g.append('rect')
     .attr('rx', 5)
     .attr('ry', 5)
@@ -32,14 +30,16 @@ export default (props: { personage: PersonageNode }) => {
     const bbox = this.getBBox();
     g.select('rect')
       .attr('x', x - (bbox.width / 2) - (paddingLeftRight / 2))
-      .attr('y', y - bbox.height + paddingTopBottom / 2)
+      .attr('y', y - bbox.height + (paddingTopBottom / 2) - 2)
       .attr('width', bbox.width + paddingLeftRight)
       .attr('height', bbox.height + paddingTopBottom)
-      
       .attr('text-anchor', 'middle');
   });
+}
+
+export default (props: { personage: PersonageNode }) => {
+  const personage: PersonageNode = props.personage || PersonageNodeDefault();
   
-  return (
-    <g className={personage.data.id}></g>
-  );
+  return <g ref={node => createLabel(node, personage)} className={personage.data.id}></g>
+  
 }
