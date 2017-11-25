@@ -2,18 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c03c10e9-9052-4cc4-928d-a05e10085223" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/data/bourbons.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/data/index.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/data/valois-d-angouleme.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/utils/depth.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/utils/depth.test.js" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/source.js" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.js" afterPath="$PROJECT_DIR$/src/App.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/App.test.js" afterPath="$PROJECT_DIR$/src/App.test.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/personage/link.js" afterPath="$PROJECT_DIR$/src/components/personage/link.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/containers/Family.js" afterPath="$PROJECT_DIR$/src/containers/Family.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/types/family.js" afterPath="$PROJECT_DIR$/src/types/family.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -135,7 +125,7 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Family.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="Family.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/containers/Family.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="240">
@@ -143,6 +133,22 @@
                   <folding>
                     <element signature="e#10#51#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="README.md" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/README.md">
+              <provider editor-type-id="MarkdownFxPreviewEditor">
+                <state />
+              </provider>
+              <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+                <state split_layout="FIRST">
+                  <first_editor relative-caret-position="0">
+                    <caret line="0" column="15" lean-forward="true" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
+                    <folding />
+                  </first_editor>
+                  <second_editor />
                 </state>
               </provider>
             </entry>
@@ -205,8 +211,8 @@
       <find>d3</find>
       <find>name</find>
       <find>conso</find>
-      <find>console</find>
       <find>depth</find>
+      <find>console</find>
     </findStrings>
     <replaceStrings>
       <replace>value</replace>
@@ -255,6 +261,7 @@
         <option value="$PROJECT_DIR$/src/data/index.js" />
         <option value="$PROJECT_DIR$/src/App.js" />
         <option value="$PROJECT_DIR$/src/containers/Family.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -483,7 +490,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40306000" />
+    <option name="totallyTimeSpent" value="40424000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -542,16 +549,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/containers/PersonageCard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="14" column="2" lean-forward="false" selection-start-line="14" selection-start-column="2" selection-end-line="14" selection-end-column="2" />
-          <folding>
-            <element signature="e#10#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/data/bourbons.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="482">
@@ -977,6 +974,20 @@
           <folding>
             <element signature="e#10#51#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="MarkdownFxPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="split-provider[text-editor;MarkdownPreviewEditor]">
+        <state split_layout="FIRST">
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="15" lean-forward="true" selection-start-line="0" selection-start-column="15" selection-end-line="0" selection-end-column="15" />
+            <folding />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
