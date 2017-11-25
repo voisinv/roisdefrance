@@ -74,7 +74,9 @@ class Family extends Component<any, State> {
               configuration={this.state.configuration}
               key={i + 'link'}></PersonageLink>))}
           {this.state.descendants.map((p: any, i: number) =>
-            (<PersonageContainer personage={p} key={i + 'personageperson'}></PersonageContainer>))}
+            (<PersonageContainer
+              configuration={this.state.configuration}
+              personage={p} key={i + 'personageperson'}></PersonageContainer>))}
         </g>
         <text x={10} y={50} style={styles.familyName}>{this.state.data.familyName}</text>
         <text x={10} y={90} style={styles.familyCenturies}>XVII - XIX</text>
