@@ -5,18 +5,15 @@ import { hierarchy, tree } from 'd3-hierarchy';
 
 import PersonageLink from '../components/personage/link';
 import PersonageContainer from './PersonageCard';
+import { getSVGHeightFromDepth } from '../utils/depth';
 
-import type {FamilyConfiguration} from "../types/family";
+import type { FamilyData, FamilyConfiguration } from "../types/family";
 import type { PersonageNode } from "../types/personage";
 
-type FamilyObject = {
-  familyName: string,
-  children: Array<any>
-}
 
 type State = {
   configuration: FamilyConfiguration,
-  data: FamilyObject,
+  data: FamilyData,
   links: Array<void | PersonageLink>,
   descendants: Array<void | PersonageNode>,
   width: number,
@@ -29,29 +26,30 @@ class Family extends Component<any, State> {
     this.state = {
       data: {
         familyName: '',
-        children: []
+        children: [],
+        depth: 0
       },
       links: [],
       descendants: [],
       width: 0,
       height: 0,
-      configuration: props.configuration
+      ...props
     };
   }
   
   componentDidMount() {
-    this.setState({data: this.props.data});
+    this.setState({ data: this.props.data });
     this.updateTree(this.props.data);
   }
   
-  updateTree(family: FamilyObject) {
+  updateTree(family: FamilyData) {
     if (family.children.length === 0) {
       return;
     }
     const root = hierarchy(family.children[0]);
     const treeLayout = tree();
     const WIDTH = window.innerWidth;
-    const HEIGHT = this.getMaxDepth(family.children[0]);
+    const HEIGHT = getSVGHeightFromDepth(this.state.data.depth);
     
     treeLayout.size([WIDTH, HEIGHT - 150]);
     treeLayout(root);
@@ -64,30 +62,17 @@ class Family extends Component<any, State> {
     });
   }
   
-  getMaxDepth(parent: any = {}): number {
-    let depth = 1;
-    
-    function test(p: any = {}): number {
-      p.children = p.children || [];
-      const depths = p.children.filter((child: any = {}) => child.children);
-      if (depths.length) {
-        depth++;
-        return test(depths[0]);
-      }
-      return depth;
-    }
-    
-    return test(parent) * 175;
-  }
-  
-  
   render() {
     return (
-      <g style={{ stroke: '#0000ff2e' }}>
-        <rect width={this.state.width} height={this.state.height} style={{ fill: this.state.configuration.background }}></rect>
+      <g style={{ stroke: '#0000ff2e' }} transform={'translate(0,' + getSVGHeightFromDepth(this.state.data.cumulatedDepth) + ')'}>
+        <rect width={this.state.width} height={this.state.height}
+              style={{ fill: this.state.configuration.background }}></rect>
         <g transform='translate(0, 100)'>
           {this.state.links.map((p: any, i: number) =>
-            (<PersonageLink link={p} key={i + 'link'}></PersonageLink>))}
+            (<PersonageLink
+              link={p}
+              configuration={this.state.configuration}
+              key={i + 'link'}></PersonageLink>))}
           {this.state.descendants.map((p: any, i: number) =>
             (<PersonageContainer personage={p} key={i + 'personageperson'}></PersonageContainer>))}
         </g>
