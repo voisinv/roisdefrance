@@ -1,5 +1,6 @@
 export default {
   familyName: 'Bourbons',
+  centuries: ['XVI', 'XIX'],
   children: [{
     id: 'Henri_IV',
     value: 'Henri IV',
@@ -50,7 +51,8 @@ export default {
                   id: 'Louis_XVI',
                   value: 'Louis XVI',
                   date: [1754, 1793],
-                  reign: 1774
+                  reign: 1774,
+                  hasReigned: true
                 }, {
                   id: 'Louis_XVIII',
                   value: 'Louis XVIII',

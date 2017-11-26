@@ -63,6 +63,7 @@ class Family extends Component<any, State> {
   }
   
   render() {
+    const [start, end] = this.state.data.centuries;
     return (
       <g style={{ stroke: '#0000ff2e' }} transform={'translate(0,' + getSVGHeightFromDepth(this.state.data.cumulatedDepth) + ')'}>
         <rect width={this.state.width} height={this.state.height}
@@ -78,8 +79,8 @@ class Family extends Component<any, State> {
               configuration={this.state.configuration}
               personage={p} key={i + 'personageperson'}></PersonageContainer>))}
         </g>
-        <text x={10} y={50} style={styles.familyName}>{this.state.data.familyName}</text>
-        <text x={10} y={90} style={styles.familyCenturies}>XVII - XIX</text>
+        <text x={10} y={50} style={styles.familyName}>{this.state.data.dynasty}</text>
+        <text x={10} y={90} style={styles.familyCenturies}>{start + ' - ' + end}</text>
       </g>
     )
   }

@@ -10,5 +10,6 @@ export type FamilyData = {
   familyName: string,
   depth?: number,
   cumulatedDepth?: number,
+  centuries: [string, string],
   children: Array<any>
 };

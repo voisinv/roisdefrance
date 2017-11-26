@@ -15,7 +15,7 @@ const getFamilyDepth = (parent: any = {}): number => {
 };
 
 
-const getSVGHeightFromDepth = (depth: number = 0) => depth * 175;
+const getSVGHeightFromDepth = (depth: number = 0) => depth * 110;
 
 const getTotalDepth = (): number => {
   return 0;

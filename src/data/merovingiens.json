@@ -1,0 +1,181 @@
+{
+  "dynasty"
+:
+  "Mérovingiens", "centuries"
+:
+  [], "children"
+:
+  [{
+    "id": "Clovis_Ier",
+    "value": "Clovis Ier",
+    "date": [null, 511],
+    "hasReigned": true,
+    "reign": [482, 482],
+    "dynasty": "Mérovingiens",
+    "children": [{
+      "id": "Thierry_Ier",
+      "value": "Thierry Ier",
+      "date": [null, 534],
+      "hasReigned": false,
+      "dynasty": "Mérovingiens",
+      "children": [{
+        "id": "Chipéric_Ier",
+        "value": "Chipéric Ier",
+        "date": [null, 584],
+        "hasReigned": false,
+        "dynasty": "Mérovingiens",
+        "children": [{
+          "id": "Clotaire_II",
+          "value": "Clotaire II",
+          "date": [null, 629],
+          "hasReigned": true,
+          "reign": [584, 584],
+          "dynasty": "Mérovingiens",
+          "children": [{
+            "id": "Dagobert_Ier",
+            "value": "Dagobert Ier",
+            "date": [null, 639],
+            "hasReigned": true,
+            "reign": [629, 629],
+            "dynasty": "Mérovingiens",
+            "children": [{
+              "id": "Clovis_II",
+              "value": "Clovis II",
+              "date": [null, 657],
+              "hasReigned": false,
+              "dynasty": "Mérovingiens",
+              "children": [{
+                "id": "Clotaire_III",
+                "value": "Clotaire III",
+                "date": [null, 673],
+                "hasReigned": false,
+                "dynasty": "Mérovingiens",
+                "children": [{
+                  "id": "Clovis_III",
+                  "value": "Clovis III",
+                  "date": [null, 676],
+                  "hasReigned": false,
+                  "dynasty": "Mérovingiens",
+                  "children": []
+                }]
+              }, {
+                "id": "Childéric_II",
+                "value": "Childéric II",
+                "date": [null, 675],
+                "hasReigned": false,
+                "dynasty": "Mérovingiens",
+                "children": [{
+                  "id": "Chilpéric_II",
+                  "value": "Chilpéric II",
+                  "date": [null, 721],
+                  "hasReigned": false,
+                  "dynasty": "Mérovingiens",
+                  "children": [{
+                    "id": "Childéric_III",
+                    "value": "Childéric III",
+                    "date": [null, 751],
+                    "hasReigned": true,
+                    "reign": [743, 743],
+                    "dynasty": "Mérovingiens",
+                    "children": []
+                  }]
+                }]
+              }, {
+                "id": "Thierry_III",
+                "value": "Thierry III",
+                "date": [null, 690],
+                "hasReigned": true,
+                "reign": [673, 673],
+                "dynasty": "Mérovingiens",
+                "children": [{
+                  "id": "Clovis_IV",
+                  "value": "Clovis IV",
+                  "date": [null, 695],
+                  "hasReigned": true,
+                  "reign": [691, 691],
+                  "dynasty": "Mérovingiens",
+                  "children": []
+                }, {
+                  "id": "Childebert_III",
+                  "value": "Childebert III",
+                  "date": [null, 711],
+                  "hasReigned": true,
+                  "reign": [695, 695],
+                  "dynasty": "Mérovingiens",
+                  "children": [{
+                    "id": "Dagobert_III",
+                    "value": "Dagobert III",
+                    "date": [null, 711],
+                    "hasReigned": true,
+                    "reign": [715, 715],
+                    "dynasty": "Mérovingiens",
+                    "children": [{
+                      "id": "Thierry_IV",
+                      "value": "Thierry IV",
+                      "date": [null, 737],
+                      "hasReigned": true,
+                      "reign": [737, 737],
+                      "dynasty": "Mérovingiens",
+                      "children": []
+                    }]
+                  }]
+                }]
+              }]
+            }, {
+              "id": "Sigebert_III",
+              "value": "Sigebert III",
+              "date": [634, 656],
+              "dynasty": "Mérovingiens",
+              "children": [{
+                "id": "Childebert",
+                "value": "Childebert",
+                "date": [656, 662],
+                "dynasty": "Mérovingiens",
+                "children": []
+              }, {
+                "id": "Dagobert_II",
+                "value": "Dagobert II",
+                "date": [null, 679],
+                "hasReigned": false,
+                "dynasty": "Mérovingiens",
+                "children": []
+              }]
+            }]
+          }]
+        }]
+      }]
+    }, {
+      "id": "Clodomir",
+      "value": "Clodomir",
+      "date": [511, 524],
+      "dynasty": "Mérovingiens",
+      "children": [{
+        "id": "Caribert",
+        "value": "Caribert",
+        "date": [561, 567],
+        "dynasty": "Mérovingiens",
+        "children": []
+      }]
+    }, {
+      "id": "Childebert",
+      "value": "Childebert",
+      "date": [511, 558],
+      "dynasty": "Mérovingiens",
+      "children": [{
+        "id": "Gontran",
+        "value": "Gontran",
+        "date": [561, 592],
+        "dynasty": "Mérovingiens",
+        "children": []
+      }]
+    }, {
+      "id": "Clotaire_Ier",
+      "value": "Clotaire Ier",
+      "date": [null, 561],
+      "hasReigned": true,
+      "reign": [558, 558],
+      "dynasty": "Mérovingiens",
+      "children": []
+    }]
+  }]
+}

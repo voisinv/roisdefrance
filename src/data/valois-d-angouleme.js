@@ -1,5 +1,6 @@
 export default {
-  familyName: 'Les Valois-Angoulême',
+  familyName: 'Valois-Angoulême',
+  centuries: ['XV', 'XVI'],
   children: [{
     id: 'Francois_Ier',
     value: 'François Ier',

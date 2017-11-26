@@ -36,7 +36,7 @@ class App extends Component<{}, state> {
     const configuration = {
       background: getColorPastel(index),
       childLink: getColorDark(index),
-      kingLink: getColorDark(index + 1)
+      kingLink: getColorDark(index )
     };
     
     return <Family

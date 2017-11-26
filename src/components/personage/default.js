@@ -3,6 +3,7 @@
 import type { Personage, PersonageNode, PersonageLink } from '../../types/personage';
 
 const PersonageDefault = (): Personage => ({
+  id: '',
   value: '',
   children: []
 });
