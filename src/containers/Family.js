@@ -1,90 +1,56 @@
 // @flow
 
-import React, { Component } from 'react';
+import React from 'react';
 import { hierarchy, tree } from 'd3-hierarchy';
 
 import PersonageLink from '../components/personage/link';
-import PersonageContainer from './PersonageCard';
-import { getSVGHeightFromDepth } from '../utils/depth';
+import PersonageLabelContainer from '../components/personage/label';
 
-import type { FamilyData, FamilyConfiguration } from "../types/family";
-import type { PersonageNode } from "../types/personage";
+import type { FamilyData } from '../types/family';
 
+function getTree(family: FamilyData, { height, width }) {
+  if (family.children.length === 0) {
+    return { links: [], descendants: [] };
+  }
+  const root = hierarchy(family.children[0]);
+  const treeLayout = tree();
 
-type State = {
-  configuration: FamilyConfiguration,
-  data: FamilyData,
-  links: Array<void | PersonageLink>,
-  descendants: Array<void | PersonageNode>,
-  width: number,
-  height: number
+  treeLayout.size([width, height - 150]);
+  treeLayout(root);
+
+  return {
+    links: root.links(),
+    descendants: root.descendants()
+  };
 }
 
-class Family extends Component<any, State> {
-  constructor(props: any) {
-    super(props);
-    this.state = {
-      data: {
-        familyName: '',
-        children: [],
-        depth: 0
-      },
-      links: [],
-      descendants: [],
-      width: 0,
-      height: 0,
-      ...props
-    };
-  }
+const Family = ({ data, actions }: { data: FamilyData, actions: any }) => {
+  const [start, end] = data.centuries;
+  const { personage, family } = actions;
+  const height = family.height(data.depth);
+  const width = family.width();
+  const { links, descendants } = getTree(data, { height, width });
   
-  componentDidMount() {
-    this.setState({ data: this.props.data });
-    this.updateTree(this.props.data);
-  }
-  
-  updateTree(family: FamilyData) {
-    if (family.children.length === 0) {
-      return;
-    }
-    const root = hierarchy(family.children[0]);
-    const treeLayout = tree();
-    const WIDTH = window.innerWidth;
-    const HEIGHT = getSVGHeightFromDepth(this.state.data.depth);
-    
-    treeLayout.size([WIDTH, HEIGHT - 150]);
-    treeLayout(root);
-    
-    this.setState({
-      links: root.links(),
-      descendants: root.descendants(),
-      width: WIDTH,
-      height: HEIGHT
-    });
-  }
-  
-  render() {
-    const [start, end] = this.state.data.centuries;
-    return (
-      <g style={{ stroke: '#0000ff2e' }} transform={'translate(0,' + getSVGHeightFromDepth(this.state.data.cumulatedDepth) + ')'}>
-        <rect width={this.state.width} height={this.state.height}
-              style={{ fill: this.state.configuration.background }}></rect>
-        <g transform='translate(0, 100)'>
-          {this.state.links.map((p: any, i: number) =>
-            (<PersonageLink
-              link={p}
-              configuration={this.state.configuration}
-              key={i + 'link'}></PersonageLink>))}
-          {this.state.descendants.map((p: any, i: number) =>
-            (<PersonageContainer
-              configuration={this.state.configuration}
-              personage={p} key={i + 'personageperson'}></PersonageContainer>))}
-        </g>
-        <text x={10} y={50} style={styles.familyName}>{this.state.data.dynasty}</text>
-        <text x={10} y={90} style={styles.familyCenturies}>{start + ' - ' + end}</text>
+  return (
+    <g style={{ stroke: '#0000ff2e' }} transform={`translate(0,
+      ${family.translateY(data.cumulatedDepth)})`}>
+      <rect width={width} height={height}
+            style={{ fill: family.colors(data.dynasty).background }}></rect>
+      <g transform='translate(0, 100)'>
+        {links.map((p: any, i: number) =>
+          (<PersonageLink
+            link={p} actions={personage} key={i + 'link'}></PersonageLink>))}
+        {descendants.map((p: any, i: number) =>
+          (<PersonageLabelContainer
+            actions={personage} personage={p} key={i + 'personage'}>
+          </PersonageLabelContainer>))}
       </g>
-    )
-  }
-}
+      <text x={10} y={50}
+            style={styles.familyName}>{data.dynasty}</text>
+      <text x={10} y={90} style={styles.familyCenturies}>{start + ' - ' +
+      end}</text>
+    </g>);
+};
 
 const styles = {
   familyName: {
@@ -99,7 +65,7 @@ const styles = {
     fill: '#f5f4f4',
     fillOpacity: 0.9
   }
-  
+
 };
 
 export default Family;

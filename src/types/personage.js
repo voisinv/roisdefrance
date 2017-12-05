@@ -5,6 +5,7 @@ export type Personage = {
   value: string,
   date?: [number, number],
   reign?: number,
+  dynasty: string,
   hasReigned?: boolean,
   children: Array<void | any>
 };

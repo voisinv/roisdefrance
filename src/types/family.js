@@ -1,13 +1,15 @@
 // @flow
 
 export type FamilyConfiguration = {
-  background: string,
-  childLink: string,
-  kingLink: string
+  colors: {
+    background?: string,
+    strong?: string,
+    weak?: string
+  }
 };
 
 export type FamilyData = {
-  familyName: string,
+  dynasty: string,
   depth?: number,
   cumulatedDepth?: number,
   centuries: [string, string],
