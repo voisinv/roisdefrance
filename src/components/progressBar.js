@@ -1,14 +1,15 @@
+// @flow
 import React from 'react';
 import { dynasties } from '../data';
 import { getColorPastel } from '../utils/colors';
+import * as doc from '../utils/document';
 
 const lastDynastie = dynasties[dynasties.length - 1];
 const totalYearsOfReign = lastDynastie.cumulatedYearsOfReign +
   lastDynastie.yearsOfReign;
-const width = window.innerWidth;
 const height = 75;
 
-const get = (width: number, totalYearsOfReign) => ({
+const getWidthAndX = (width: number, totalYearsOfReign) => ({
   getWidth(o: any) {
     return width * (o.yearsOfReign / totalYearsOfReign);
   },
@@ -17,23 +18,38 @@ const get = (width: number, totalYearsOfReign) => ({
   }
 });
 const progressBarWidth = 40;
-const { getWidth, getX } = get(width, totalYearsOfReign);
-
-export default class ProgressBar extends React.Component {
-  constructor(props) {
-    super(props);
+const { getWidth, getX } = getWidthAndX(doc.getWindowWidth(),
+  totalYearsOfReign);
+type State = {
+  x: number,
+  documentHeight: number,
+  window: {
+    height: number,
+    width: number
+  }
+}
+export default class ProgressBar extends React.Component<any, State> {
+  constructor() {
+    super();
     this.state = {
       x: 0,
-      documentHeight: 1
+      documentHeight: 1,
+      window: {
+        height: 1,
+        width: doc.getWindowWidth()
+      }
     };
-    this.handleScroll = this.handleScroll.bind(this);
   }
 
   componentDidMount() {
     this.setState({
-      documentHeight: getDocumentHeight()
+      documentHeight: doc.getDocumentHeight(),
+      window: {
+        height: doc.getWindowHeight(),
+        width: doc.getWindowWidth()
+      }
     });
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('scroll', this.handleScroll.bind(this));
   }
 
   componentWillUnmount() {
@@ -41,23 +57,22 @@ export default class ProgressBar extends React.Component {
   }
 
   handleScroll() {
-    const winheight = window.innerHeight ||
-      (document.documentElement || document.body).clientHeight;
-    const scrollTop = window.pageYOffset ||
-      (document.documentElement || document.body.parentNode ||
-        document.body).scrollTop;
-    const trackLength = this.state.documentHeight - winheight;
+    const scrollTop: number = (doc.getDocumentScrollTop(): number);
+    const trackLength: number = this.state.documentHeight -
+      this.state.window.height;
     const pctScrolled = scrollTop / trackLength * 100;
     this.setState({ x: pctScrolled / 100 });
   }
 
-  getLineX(percentage) {
-    const currentX = percentage * width;
-    return currentX + progressBarWidth > width ? width - progressBarWidth : currentX;
+  getLineX(percentage: number) {
+    const windowWidth = this.state.window.width;
+    const currentX = percentage * windowWidth;
+    return currentX + progressBarWidth > windowWidth ? windowWidth -
+      progressBarWidth : currentX;
   }
 
   render() {
-    let lineX = this.getLineX(this.state.x);
+    const rectX = this.getLineX(this.state.x);
     return (<svg style={styles.svg}>
       {
         dynasties.map((d, i: number) =>
@@ -66,9 +81,13 @@ export default class ProgressBar extends React.Component {
             x={getX(d)} y={0} width={getWidth(d)} height={height}
             fill={getColorPastel(i)}>
           </rect>)}
-      <rect x={0} y={0} width={lineX} height={75} style={styles.noProgression}></rect>
-      <rect x={lineX} y={0} width={progressBarWidth} height={75} style={styles.progression}></rect>
-      <rect x={lineX + progressBarWidth} y={0} width={width - lineX - progressBarWidth} height={75} style={styles.noProgression}></rect>
+      <rect x={0} y={0} width={rectX} height={75}
+            style={styles.noProgression}/>
+      <rect x={rectX} y={0} width={progressBarWidth} height={75}
+            style={styles.progression}/>
+      <rect x={rectX + progressBarWidth} y={0}
+            width={this.state.window.width - rectX - progressBarWidth}
+            height={75} style={styles.noProgression}/>
     </svg>);
   }
 }
@@ -89,12 +108,3 @@ const styles = {
   }
 
 };
-
-function getDocumentHeight() {
-  const D = document;
-  return Math.max(
-    D.body.scrollHeight, D.documentElement.scrollHeight,
-    D.body.offsetHeight, D.documentElement.offsetHeight,
-    D.body.clientHeight, D.documentElement.clientHeight
-  );
-}
