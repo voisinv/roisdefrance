@@ -14,6 +14,9 @@ type state = {
   configuration?: FamilyConfiguration
 };
 
+const scroll = (e) => {
+  console.log(e);
+}
 class App extends Component<{}, state> {
 
   constructor(props: any) {
@@ -52,7 +55,7 @@ class App extends Component<{}, state> {
     const maxDepth = depth + cumulatedDepth;
     const svgHeight = getSVGHeightFromDepth(maxDepth) + 75;
     return (
-      <div className="App">
+      <div className="App"  onScrollCapture={scroll}>
         <ProgressBar></ProgressBar>
         <svg height={svgHeight} width={window.innerWidth}>
           <g transform="translate(0,100)">
