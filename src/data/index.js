@@ -60,6 +60,7 @@ const dynasties = data.reduce((acc: [], family) => {
 }, []);
 export {
   families,
-  dynasties
+  dynasties,
+  romans
 };
 export default familiesWithDepth;

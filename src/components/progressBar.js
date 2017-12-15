@@ -1,53 +1,33 @@
 // @flow
 import React from 'react';
-import { dynasties } from '../data';
-import { getColorPastel } from '../utils/colors';
+import Dynasties from './progressBar/Dynasties';
+import CenturiesLabel from './progressBar/CenturiesLabel';
+import Cursor from './progressBar/Cursor';
 import * as doc from '../utils/document';
 
-const lastDynastie = dynasties[dynasties.length - 1];
-const totalYearsOfReign = lastDynastie.cumulatedYearsOfReign +
-  lastDynastie.yearsOfReign;
-const height = 75;
+import { dynasties } from '../data';
+import {progressBarWidth} from '../utils/progressBar';
 
-const getWidthAndX = (width: number, totalYearsOfReign) => ({
-  getWidth(o: any) {
-    return width * (o.yearsOfReign / totalYearsOfReign);
-  },
-  getX(o: any) {
-    return width * (o.cumulatedYearsOfReign / totalYearsOfReign);
-  }
-});
-const progressBarWidth = 40;
-const { getWidth, getX } = getWidthAndX(doc.getWindowWidth(),
-  totalYearsOfReign);
+const windowWidth = doc.getWindowWidth();
+const windowHeight = doc.getWindowHeight();
+
 type State = {
   x: number,
-  documentHeight: number,
-  window: {
-    height: number,
-    width: number
-  }
-}
+  documentHeight: number
+};
+
 export default class ProgressBar extends React.Component<any, State> {
   constructor() {
     super();
     this.state = {
       x: 0,
-      documentHeight: 1,
-      window: {
-        height: 1,
-        width: doc.getWindowWidth()
-      }
+      documentHeight: 1
     };
   }
 
   componentDidMount() {
     this.setState({
-      documentHeight: doc.getDocumentHeight(),
-      window: {
-        height: doc.getWindowHeight(),
-        width: doc.getWindowWidth()
-      }
+      documentHeight: doc.getDocumentHeight()
     });
     window.addEventListener('scroll', this.handleScroll.bind(this));
   }
@@ -58,36 +38,23 @@ export default class ProgressBar extends React.Component<any, State> {
 
   handleScroll() {
     const scrollTop: number = (doc.getDocumentScrollTop(): number);
-    const trackLength: number = this.state.documentHeight -
-      this.state.window.height;
+    const trackLength: number = this.state.documentHeight - windowHeight;
     const pctScrolled = scrollTop / trackLength * 100;
     this.setState({ x: pctScrolled / 100 });
   }
 
-  getLineX(percentage: number) {
-    const windowWidth = this.state.window.width;
+  getCursorX(percentage: number) {
     const currentX = percentage * windowWidth;
     return currentX + progressBarWidth > windowWidth ? windowWidth -
       progressBarWidth : currentX;
   }
 
   render() {
-    const rectX = this.getLineX(this.state.x);
+    const rectX = this.getCursorX(this.state.x);
     return (<svg style={styles.svg}>
-      {
-        dynasties.map((d, i: number) =>
-          <rect
-            key={`progress-${d.dynasty}`}
-            x={getX(d)} y={0} width={getWidth(d)} height={height}
-            fill={getColorPastel(i)}>
-          </rect>)}
-      <rect x={0} y={0} width={rectX} height={75}
-            style={styles.noProgression}/>
-      <rect x={rectX} y={0} width={progressBarWidth} height={75}
-            style={styles.progression}/>
-      <rect x={rectX + progressBarWidth} y={0}
-            width={this.state.window.width - rectX - progressBarWidth}
-            height={75} style={styles.noProgression}/>
+      <Dynasties dynasties={dynasties}></Dynasties>
+      <CenturiesLabel width={windowWidth}></CenturiesLabel>
+      <Cursor x={rectX}></Cursor>
     </svg>);
   }
 }
@@ -96,15 +63,5 @@ const styles = {
   svg: {
     position: 'fixed',
     width: '100%'
-  },
-  progression: {
-    fill: 'none',
-    stroke: 'black',
-    strokeWidth: 2
-  },
-  noProgression: {
-    fill: 'grey',
-    opacity: 0.2
   }
-
 };

@@ -16,7 +16,8 @@ type state = {
 
 const scroll = (e) => {
   console.log(e);
-}
+};
+
 class App extends Component<{}, state> {
 
   constructor(props: any) {
