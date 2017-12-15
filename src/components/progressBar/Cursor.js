@@ -6,7 +6,6 @@ import {getWindowWidth} from '../../utils/document';
 const width = getWindowWidth();
 
 export default (props: {x: number}) => {
-  console.log(props);
   return (
     <g>
       <rect x={0} y={0} width={props.x} height={75}

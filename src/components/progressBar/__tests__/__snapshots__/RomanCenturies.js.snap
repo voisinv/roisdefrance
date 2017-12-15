@@ -1,0 +1,201 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CenturiesLabel renders correctly 1`] = `
+<g>
+  <text
+    style={
+      Object {
+        "fill": "white",
+        "fillOpacity": 0.5,
+        "fontSize": 20,
+      }
+    }
+    x={0}
+    y={70}
+  >
+    V
+  </text>
+  <text
+    style={
+      Object {
+        "fill": "white",
+        "fillOpacity": 0.5,
+        "fontSize": 20,
+      }
+    }
+    x={6.666666666666667}
+    y={70}
+  >
+    VI
+  </text>
+  <text
+    style={
+      Object {
+        "fill": "white",
+        "fillOpacity": 0.5,
+        "fontSize": 20,
+      }
+    }
+    x={13.333333333333334}
+    y={70}
+  >
+    VII
+  </text>
+  <text
+    style={
+      Object {
+        "fill": "white",
+        "fillOpacity": 0.5,
+        "fontSize": 20,
+      }
+    }
+    x={20}
+    y={70}
+  >
+    VIII
+  </text>
+  <text
+    style={
+      Object {
+        "fill": "white",
+        "fillOpacity": 0.5,
+        "fontSize": 20,
+      }
+    }
+    x={26.666666666666668}
+    y={70}
+  >
+    IX
+  </text>
+  <text
+    style={
+      Object {
+        "fill": "white",
+        "fillOpacity": 0.5,
+        "fontSize": 20,
+      }
+    }
+    x={33.33333333333333}
+    y={70}
+  >
+    X
+  </text>
+  <text
+    style={
+      Object {
+        "fill": "white",
+        "fillOpacity": 0.5,
+        "fontSize": 20,
+      }
+    }
+    x={40}
+    y={70}
+  >
+    XI
+  </text>
+  <text
+    style={
+      Object {
+        "fill": "white",
+        "fillOpacity": 0.5,
+        "fontSize": 20,
+      }
+    }
+    x={46.666666666666664}
+    y={70}
+  >
+    XII
+  </text>
+  <text
+    style={
+      Object {
+        "fill": "white",
+        "fillOpacity": 0.5,
+        "fontSize": 20,
+      }
+    }
+    x={53.333333333333336}
+    y={70}
+  >
+    XIII
+  </text>
+  <text
+    style={
+      Object {
+        "fill": "white",
+        "fillOpacity": 0.5,
+        "fontSize": 20,
+      }
+    }
+    x={60}
+    y={70}
+  >
+    XIV
+  </text>
+  <text
+    style={
+      Object {
+        "fill": "white",
+        "fillOpacity": 0.5,
+        "fontSize": 20,
+      }
+    }
+    x={66.66666666666666}
+    y={70}
+  >
+    XV
+  </text>
+  <text
+    style={
+      Object {
+        "fill": "white",
+        "fillOpacity": 0.5,
+        "fontSize": 20,
+      }
+    }
+    x={73.33333333333333}
+    y={70}
+  >
+    XVI
+  </text>
+  <text
+    style={
+      Object {
+        "fill": "white",
+        "fillOpacity": 0.5,
+        "fontSize": 20,
+      }
+    }
+    x={80}
+    y={70}
+  >
+    XVII
+  </text>
+  <text
+    style={
+      Object {
+        "fill": "white",
+        "fillOpacity": 0.5,
+        "fontSize": 20,
+      }
+    }
+    x={86.66666666666667}
+    y={70}
+  >
+    XVIII
+  </text>
+  <text
+    style={
+      Object {
+        "fill": "white",
+        "fillOpacity": 0.5,
+        "fontSize": 20,
+      }
+    }
+    x={93.33333333333333}
+    y={70}
+  >
+    XIX
+  </text>
+</g>
+`;

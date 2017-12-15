@@ -1,7 +1,7 @@
 // @flow
 import React from 'react';
 import Dynasties from './progressBar/Dynasties';
-import CenturiesLabel from './progressBar/CenturiesLabel';
+import CenturiesLabel from './progressBar/RomanCenturies';
 import Cursor from './progressBar/Cursor';
 import * as doc from '../utils/document';
 

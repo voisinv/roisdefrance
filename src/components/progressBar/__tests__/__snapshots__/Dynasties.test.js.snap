@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dynasties renders correctly 1`] = `
+<g>
+  <rect
+    fill="#b3e2cd"
+    height={75}
+    width={682.6666666666666}
+    x={0}
+    y={0}
+  />
+  <rect
+    fill="#fdcdac"
+    height={75}
+    width={341.3333333333333}
+    x={682.6666666666666}
+    y={0}
+  />
+</g>
+`;
+
+exports[`Dynasty renders correctly 1`] = `
+<rect
+  fill="#123456"
+  height={75}
+  width={200}
+  x={100}
+  y={0}
+/>
+`;

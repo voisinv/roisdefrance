@@ -1,0 +1,43 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Cursor renders correctly 1`] = `
+<g>
+  <rect
+    height={75}
+    style={
+      Object {
+        "fill": "grey",
+        "opacity": 0.2,
+      }
+    }
+    width={10}
+    x={0}
+    y={0}
+  />
+  <rect
+    height={75}
+    style={
+      Object {
+        "fill": "none",
+        "stroke": "black",
+        "strokeWidth": 2,
+      }
+    }
+    width={40}
+    x={10}
+    y={0}
+  />
+  <rect
+    height={75}
+    style={
+      Object {
+        "fill": "grey",
+        "opacity": 0.2,
+      }
+    }
+    width={974}
+    x={50}
+    y={0}
+  />
+</g>
+`;

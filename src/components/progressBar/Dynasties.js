@@ -4,7 +4,7 @@ import * as utils from '../../utils/progressBar';
 import { getWindowWidth } from '../../utils/document';
 import { getColorPastel } from '../../utils/colors';
 
-const CenturyLabel = ({ x, fill, width }: { x: number, fill: string, width: number }) => {
+export const Dynasty = ({ x, fill, width }: { x: number, fill: string, width: number }) => {
   return (
     <rect
       x={x} y={0}
@@ -27,12 +27,12 @@ export default class extends React.PureComponent<any> {
     return (
       <g>
         {dynasties.map((d, i: number) =>
-          <CenturyLabel
+          <Dynasty
             key={`progress-${d.dynasty}`}
             x={getX(d)}
             width={getWidth(d)}
             fill={getColorPastel(i)}>
-          </CenturyLabel>)}
+          </Dynasty>)}
       </g>);
   }
 }
