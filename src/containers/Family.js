@@ -60,7 +60,7 @@ const DynastyInfo = ({ name, start, end }) => (
   <g>
     <text x={10} y={50} style={styles.familyName} key='name'>{name}</text>
     <text x={10} y={90} style={styles.familyCenturies} key='duration'>
-      `${start} - ${end}`
+      {start} - {end}
     </text>
     ;
   </g>
