@@ -13,7 +13,7 @@ function createLabel(
   node: any, personage: PersonageNode, configuration: FamilyConfiguration) {
   const x = personage.x;
   const y = personage.y;
-  const g = d3.select('body');
+  const g = d3.select(node);
 
   const hasReigned = personage.data.hasReigned;
   g.append('rect')
