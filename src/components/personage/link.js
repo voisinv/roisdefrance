@@ -5,7 +5,7 @@ import type { PersonageLink } from '../../types/personage';
 import { PersonageLinkDefault } from './default';
 import type { FamilyConfiguration } from '../../types/family';
 
-const Link = (props: { link: PersonageLink, configuration: FamilyConfiguration }) => {
+export const Link = (props: { link: PersonageLink, configuration: FamilyConfiguration }) => {
   const { source, target }: PersonageLink = props.link ||
   PersonageLinkDefault();
   const kingLink = props.configuration ? props.configuration.colors.strong : '';
@@ -29,9 +29,13 @@ const Link = (props: { link: PersonageLink, configuration: FamilyConfiguration }
   ></line>;
 };
 
-export default (props: { link: PersonageLink, actions: any }) => {
+export default (props: { link: PersonageLink, actions: any } = {
+  link: PersonageLinkDefault(),
+  actions: { colors: () => '' }
+}) => {
+  const dynasty = props.link ? props.link.source.data.dynasty : '';
   const configuration = {
-    colors: props.actions.colors(props.link.source.data.dynasty)
+    colors: props.actions.colors(dynasty)
   };
   return <Link link={props.link} configuration={configuration}/>;
 };

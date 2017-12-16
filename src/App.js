@@ -45,8 +45,7 @@ class App extends Component<{}, state> {
       actions={Object.assign({}, {
         personage: this.personageActions,
         family: this.familyActions
-      })
-      }
+      })}
       data={data}>
     </Family>;
   }
@@ -56,7 +55,7 @@ class App extends Component<{}, state> {
     const maxDepth = depth + cumulatedDepth;
     const svgHeight = getSVGHeightFromDepth(maxDepth) + 75;
     return (
-      <div className="App"  onScrollCapture={scroll}>
+      <div className="App" onScrollCapture={scroll}>
         <ProgressBar></ProgressBar>
         <svg height={svgHeight} width={window.innerWidth}>
           <g transform="translate(0,100)">

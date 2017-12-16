@@ -1,0 +1,35 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Link renders correctly 1`] = `
+<line
+  style={
+    Object {
+      "opacity": 0.7,
+      "stroke": undefined,
+      "strokeDasharray": 10,
+      "strokeWidth": 2,
+    }
+  }
+  x1={0}
+  x2={0}
+  y1={0}
+  y2={0}
+/>
+`;
+
+exports[`LinkContainer  renders correctly 1`] = `
+<line
+  style={
+    Object {
+      "opacity": 0.7,
+      "stroke": undefined,
+      "strokeDasharray": 10,
+      "strokeWidth": 2,
+    }
+  }
+  x1={140}
+  x2={160}
+  y1={150}
+  y2={170}
+/>
+`;

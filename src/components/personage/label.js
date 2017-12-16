@@ -13,7 +13,8 @@ function createLabel(
   node: any, personage: PersonageNode, configuration: FamilyConfiguration) {
   const x = personage.x;
   const y = personage.y;
-  const g = d3.select(node);
+  const g = d3.select('body');
+
   const hasReigned = personage.data.hasReigned;
   g.append('rect')
     .attr('rx', 2)
@@ -50,7 +51,7 @@ function createLabel(
   });
 }
 
-const PersonageLabel = (props: { personage: PersonageNode, configuration: FamilyConfiguration }) => {
+export const Label = (props: { personage: PersonageNode, configuration: FamilyConfiguration }) => {
   const personage: PersonageNode = props.personage || PersonageNodeDefault();
 
   return <g ref={node => createLabel(node, personage, props.configuration)}
@@ -60,13 +61,11 @@ const PersonageLabel = (props: { personage: PersonageNode, configuration: Family
 
 export default (props: { personage: PersonageNode, actions: any }) => {
   const personage: PersonageNode = props.personage || PersonageNodeDefault();
-  if (!personage.data.dynasty)
-    console.log(personage.data.value, personage.data.dynasty);
   const configuration = {
     colors: props.actions.colors(personage.data.dynasty)
   };
   return <g>
-    <PersonageLabel personage={personage} configuration={configuration}>
-    </PersonageLabel>
+    <Label personage={personage} configuration={configuration}>
+    </Label>
   </g>;
 };
