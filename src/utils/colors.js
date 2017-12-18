@@ -17,5 +17,5 @@ const obj = families.reduce((acc, name: string, index) =>
       weak: getColorDark(index),
     },
   }), {});
-console.log(obj);
+
 export default obj;

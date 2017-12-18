@@ -2,20 +2,16 @@
 import React, { Component } from 'react';
 import './App.css';
 import data from './data';
-import Family from './containers/Family';
+import Dynasty from './containers/Dynasty';
 import type { FamilyConfiguration, FamilyData } from './types/family';
 import { getSVGHeightFromDepth } from './utils/depth';
 import colors from './utils/colors';
-import ProgressBar from './components/progressBar';
+import ProgressBar from './containers/progressBar';
 
 type state = {
   data: Array<any>,
   colors: any,
   configuration?: FamilyConfiguration
-};
-
-const scroll = (e) => {
-  console.log(e);
 };
 
 class App extends Component<{}, state> {
@@ -31,7 +27,7 @@ class App extends Component<{}, state> {
   personageActions = {
     colors: (dynasty: string) => this.state.colors[dynasty]
   };
-  familyActions = {
+  dynastyActions = {
     colors: (dynasty: string) => this.state.colors[dynasty],
     width: () => window.innerWidth,
     height: (depth: number) => getSVGHeightFromDepth(depth),
@@ -39,15 +35,15 @@ class App extends Component<{}, state> {
       cumulatedDepth)
   };
 
-  getFamilyTpl(data: FamilyData) {
-    return <Family
+  getDynastyTemplate(data: FamilyData) {
+    return <Dynasty
       key={data.dynasty}
       actions={Object.assign({}, {
         personage: this.personageActions,
-        family: this.familyActions
+        family: this.dynastyActions
       })}
       data={data}>
-    </Family>;
+    </Dynasty>;
   }
 
   render() {
@@ -55,12 +51,12 @@ class App extends Component<{}, state> {
     const maxDepth = depth + cumulatedDepth;
     const svgHeight = getSVGHeightFromDepth(maxDepth) + 75;
     return (
-      <div className="App" onScrollCapture={scroll}>
+      <div className="App">
         <ProgressBar></ProgressBar>
         <svg height={svgHeight} width={window.innerWidth}>
           <g transform="translate(0,100)">
             {
-              this.state.data.map(this.getFamilyTpl.bind(this))
+              this.state.data.map(this.getDynastyTemplate.bind(this))
             }
           </g>
         </svg>

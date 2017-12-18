@@ -1,11 +1,11 @@
 // @flow
 import React from 'react';
-import Dynasties from './progressBar/Dynasties';
-import CenturiesLabel from './progressBar/RomanCenturies';
-import Cursor from './progressBar/Cursor';
+import Dynasties from '../components/progressBar/Dynasties';
+import CenturiesLabel from '../components/progressBar/RomanCenturies';
+import Cursor from '../components/progressBar/Cursor';
 import * as doc from '../utils/document';
 
-import { dynasties } from '../data';
+import { dynasties } from '../data/index';
 import {progressBarWidth} from '../utils/progressBar';
 
 const windowWidth = doc.getWindowWidth();

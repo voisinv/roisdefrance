@@ -17,7 +17,7 @@ test('getDepth should get depth of the family', () => {
 });
 
 test('getSVGHeightFromDepth should return the height of a family svg', () => {
-  expect(getSVGHeightFromDepth(5)).toEqual(5 * 175);
+  expect(getSVGHeightFromDepth(5)).toEqual(5 * 110);
 });
 
 test('getSVGHeightFromDepth should return 0 if no value', () => {
