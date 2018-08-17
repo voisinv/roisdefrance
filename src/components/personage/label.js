@@ -24,29 +24,29 @@ function createLabel(
 
   g.append('text')
     .attr('x', x)
-    .attr('y', y)
+    .attr('y', y - 3)
     .attr('fill', hasReigned ? 'white' : '#f1f1f1')
     .attr('font-family', 'unset')
     .attr('font-weight', '300')
     .attr('stroke', 'none')
     .attr('text-anchor', 'middle')
     .text(personage.data.value);
-  /*g.append('text')
+  g.append('text')
     .attr('x', x)
-    .attr('y', y)
+    .attr('y', y + 12)
     .attr('fill', hasReigned ? 'white' : '#f1f1f1')
     .attr('stroke', 'none')
     .attr('font-size', 13)
     .attr('text-anchor', 'middle')
-    .text(personage.data.date[0] + '-' + personage.data.date[1]);*/
+    .text(personage.data.date[0]  + '-' + personage.data.date[1]);
 
   g.select('text').each(function() {
     const bbox = this.getBBox();
     g.select('rect')
       .attr('x', x - (bbox.width / 2) - (paddingLeftRight / 2))
-      .attr('y', y - (bbox.height) + (paddingTopBottom / 2) - 2)
+      .attr('y', y - (bbox.height) + (paddingTopBottom / 2) - 5)
       .attr('width', bbox.width + paddingLeftRight)
-      .attr('height', bbox.height + paddingTopBottom)
+      .attr('height', bbox.height + paddingTopBottom + 13)
       .attr('text-anchor', 'middle');
   });
 }
